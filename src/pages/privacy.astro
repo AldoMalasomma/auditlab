@@ -1,0 +1,51 @@
+---
+import SupportPage from '../components/support/SupportPage.astro';
+
+const sections = [
+  {
+    title: 'What this page covers',
+    paragraphs: [
+      'This privacy page is part of the fictional AuditLab demo. It explains how a real audit product would present privacy issues without implying a live data-processing service behind the scenes.',
+    ],
+  },
+  {
+    title: 'Data handled by the demo',
+    paragraphs: [
+      'The site uses static local content only. There is no visitor tracking, user profile, or audit storage in the current build.',
+      'Report content is fictional and intended to show structure, hierarchy, and phrasing rather than legal operations.',
+    ],
+  },
+  {
+    title: 'Third-party behavior in the report',
+    paragraphs: [
+      'When the report mentions scripts, embeds, or consent timing, it is referring to the sample audit model. It does not reflect active processing on this site.',
+    ],
+  },
+];
+---
+
+<SupportPage
+  title="Privacy"
+  description="AuditLab privacy page for the fictional portfolio demo."
+  eyebrow="Support page"
+  intro="This page gives the demo a realistic privacy surface while keeping the project clearly fictional and front-end only."
+  backHref="/case"
+  backLabel="Back to case"
+  sections={sections}
+  sidebarTitle="Portfolio framing"
+  sidebarIntro="These pages are structured like a product policy set, but they are provided for portfolio realism rather than live service operations."
+  sidebarPoints={[
+    'Static local data only',
+    'No backend or form handling',
+    'No live tracking or account flow',
+  ]}
+  contactTitle="Portfolio contact"
+  contactLinks={[
+    { label: 'copycodeai.online', href: 'https://copycodeai.online' },
+    {
+      label: 'hello@copycodeai.online',
+      href: 'mailto:hello@copycodeai.online',
+    },
+  ]}
+  portfolioNote="Prepared for the current portfolio demo. This page is not a live commercial privacy policy."
+/>

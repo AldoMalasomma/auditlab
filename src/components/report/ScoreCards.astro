@@ -1,0 +1,47 @@
+---
+import type { CategoryScore } from '../../data/demo-report';
+
+interface Props {
+  cards: CategoryScore[];
+}
+
+const { cards } = Astro.props;
+---
+
+<section aria-labelledby="category-scores" class="space-y-4">
+  <div class="flex items-end justify-between gap-4">
+    <div>
+      <p class="text-xs uppercase tracking-[0.3em] text-slate-400">
+        Category scores
+      </p>
+      <h2 id="category-scores" class="mt-2 text-xl font-semibold text-slate-50">
+        Audit lens scorecard
+      </h2>
+    </div>
+    <p class="hidden text-sm text-slate-400 sm:block">
+      Use this as the quick read. The findings below explain the score in
+      detail.
+    </p>
+  </div>
+
+  <ul class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+    {
+      cards.map((card) => (
+        <li class="rounded-[1.75rem] border border-white/10 bg-white/5 p-5">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <p class="text-sm font-medium text-slate-100">{card.label}</p>
+              <p class="mt-1 text-xs uppercase tracking-[0.24em] text-slate-500">
+                {card.status}
+              </p>
+            </div>
+            <span class="text-3xl font-semibold text-slate-50">
+              {card.score}
+            </span>
+          </div>
+          <p class="mt-4 text-sm leading-6 text-slate-300">{card.summary}</p>
+        </li>
+      ))
+    }
+  </ul>
+</section>

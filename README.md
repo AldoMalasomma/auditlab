@@ -1,43 +1,45 @@
-# Astro Starter Kit: Minimal
+# AuditLab
 
-```sh
-npm create astro@latest -- --template minimal
-```
+AuditLab is a portfolio-grade Astro demo for auditing websites across privacy, cookies, accessibility, and UX clarity.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Current foundation
 
-## 🚀 Project Structure
+- Astro 6
+- Tailwind CSS 4
+- TypeScript
+- Prettier
+- mobile-first layout with a wide-screen-aware shell
 
-Inside of your Astro project, you'll see the following folders and files:
+## Project structure
 
 ```text
 /
+├── docs/
 ├── public/
 ├── src/
-│   └── pages/
-│       └── index.astro
+│   ├── layouts/
+│   ├── pages/
+│   └── styles/
+├── astro.config.mjs
 └── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Commands
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+- `npm run dev` - start the local dev server
+- `npm run build` - build for production
+- `npm run preview` - preview the production build
+- `npm run check` - run Astro checks and Prettier validation
+- `npm run format` - format the project
 
-Any static assets, like images, can be placed in the `public/` directory.
+## Documentation
 
-## 🧞 Commands
+The working docs live in `docs/`:
 
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- `docs/README.md`
+- `docs/tech-architecture.md`
+- `docs/worklog.md`
+- `docs/implementation-notes.md`
+- `docs/backlog.md`
+- `docs/brand-identity.md`
+- `docs/content-strategy.md`

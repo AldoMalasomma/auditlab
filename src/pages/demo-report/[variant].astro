@@ -1,0 +1,21 @@
+---
+import ReportPage from '../../components/report/ReportPage.astro';
+import {
+  demoReportToggleLinks,
+  getDemoReportVariant,
+} from '../../data/demo-report';
+
+export function getStaticPaths() {
+  return [
+    {
+      params: {
+        variant: 'launch-ready',
+      },
+    },
+  ];
+}
+
+const report = getDemoReportVariant(Astro.params.variant);
+---
+
+<ReportPage report={report} switchLink={demoReportToggleLinks['launch-risk']} />

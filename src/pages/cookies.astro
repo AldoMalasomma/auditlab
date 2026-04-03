@@ -1,0 +1,51 @@
+---
+import SupportPage from '../components/support/SupportPage.astro';
+
+const sections = [
+  {
+    title: 'Consent model',
+    paragraphs: [
+      'AuditLab treats cookies as a trust and clarity problem, not just a banner problem. The demo shows how consent language, button balance, and early script behavior affect the overall read.',
+    ],
+  },
+  {
+    title: 'What the demo assumes',
+    paragraphs: [
+      'The sample report assumes a small business site with a banner, a consent choice, and a few third-party services. The findings focus on whether that setup feels neutral and understandable.',
+      'There is no live cookie store or consent engine in this project.',
+    ],
+  },
+  {
+    title: 'How the audit reads it',
+    paragraphs: [
+      'The report looks at whether the choice is easy to see, whether acceptance is visually favored, and whether the explanation matches the behavior that follows.',
+    ],
+  },
+];
+---
+
+<SupportPage
+  title="Cookies"
+  description="AuditLab cookies page for the fictional portfolio demo."
+  eyebrow="Support page"
+  intro="This page keeps the cookie audit realistic and readable while remaining clearly part of a static demo build."
+  backHref="/case"
+  backLabel="Back to case"
+  sections={sections}
+  sidebarTitle="Portfolio framing"
+  sidebarIntro="The cookie policy surface helps the demo feel complete, but it does not represent a real operating product."
+  sidebarPoints={[
+    'Consent language is demo content',
+    'No active cookie management system',
+    'Portfolio contact sits with the owner',
+  ]}
+  contactTitle="Portfolio contact"
+  contactLinks={[
+    { label: 'copycodeai.online', href: 'https://copycodeai.online' },
+    {
+      label: 'hello@copycodeai.online',
+      href: 'mailto:hello@copycodeai.online',
+    },
+  ]}
+  portfolioNote="Prepared for portfolio realism. This page is a static reference and not a live cookie policy."
+/>

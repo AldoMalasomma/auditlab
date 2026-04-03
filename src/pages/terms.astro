@@ -1,0 +1,50 @@
+---
+import SupportPage from '../components/support/SupportPage.astro';
+
+const sections = [
+  {
+    title: 'Demo use',
+    paragraphs: [
+      'AuditLab is a fictional SaaS demo built to present a portfolio-grade front end. The site is meant for review, presentation, and implementation study.',
+    ],
+  },
+  {
+    title: 'Content ownership',
+    paragraphs: [
+      'The project copy, layout, and supporting structure are part of the portfolio case. Any external contact details belong to the portfolio owner rather than a live product support team.',
+    ],
+  },
+  {
+    title: 'No service relationship',
+    paragraphs: [
+      'Opening the pages does not create an account, an audit contract, or a support obligation. The experience is intentionally static.',
+    ],
+  },
+];
+---
+
+<SupportPage
+  title="Terms"
+  description="AuditLab terms page for the fictional portfolio demo."
+  eyebrow="Support page"
+  intro="This page gives the demo a realistic terms surface without implying commercial operations or a live customer relationship."
+  backHref="/case"
+  backLabel="Back to case"
+  sections={sections}
+  sidebarTitle="Portfolio framing"
+  sidebarIntro="The terms page is deliberately short and functional so the project feels complete without drifting into legal theater."
+  sidebarPoints={[
+    'Static demo only',
+    'No account or checkout flow',
+    'Portfolio contact only',
+  ]}
+  contactTitle="Portfolio contact"
+  contactLinks={[
+    { label: 'copycodeai.online', href: 'https://copycodeai.online' },
+    {
+      label: 'hello@copycodeai.online',
+      href: 'mailto:hello@copycodeai.online',
+    },
+  ]}
+  portfolioNote="Prepared for portfolio clarity. This page does not create a real service agreement."
+/>

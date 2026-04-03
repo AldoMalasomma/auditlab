@@ -1,0 +1,53 @@
+---
+import type { DemoReportData } from '../../data/demo-report';
+
+interface Props {
+  report: Pick<
+    DemoReportData,
+    | 'narrativeHeading'
+    | 'narrativeBody'
+    | 'narrativeNote'
+    | 'comparisonLabel'
+    | 'comparisonHref'
+  >;
+}
+
+const { report } = Astro.props;
+---
+
+<section
+  aria-labelledby="report-narrative-heading"
+  class="rounded-[1.75rem] border border-white/10 bg-slate-950/55 p-5 sm:p-6"
+>
+  <div class="grid gap-4 lg:grid-cols-[minmax(0,1fr)_18rem] lg:items-start">
+    <div class="space-y-3">
+      <p class="text-xs uppercase tracking-[0.3em] text-slate-400">
+        Current read
+      </p>
+      <h2
+        id="report-narrative-heading"
+        class="max-w-3xl text-xl font-semibold tracking-tight text-slate-50 sm:text-2xl"
+      >
+        {report.narrativeHeading}
+      </h2>
+      <p class="max-w-3xl text-sm leading-6 text-slate-300 sm:text-base">
+        {report.narrativeBody}
+      </p>
+    </div>
+
+    <div class="rounded-3xl border border-white/10 bg-white/5 p-4">
+      <p class="text-xs uppercase tracking-[0.24em] text-slate-400">
+        Transition
+      </p>
+      <p class="mt-2 text-sm leading-6 text-slate-300">
+        {report.narrativeNote}
+      </p>
+      <a
+        href={report.comparisonHref}
+        class="mt-3 inline-flex text-sm font-medium text-slate-100 underline decoration-white/30 underline-offset-4 transition hover:decoration-white"
+      >
+        {report.comparisonLabel}
+      </a>
+    </div>
+  </div>
+</section>

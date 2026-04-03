@@ -1,0 +1,222 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'AuditLab',
+  description = 'Audit websites across privacy, cookies, accessibility, and UX clarity.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="bg-slate-950 text-slate-50 antialiased">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#050913" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicons/favicon.svg" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      sizes="32x32"
+      href="/favicons/favicon-32.svg"
+    />
+    <link rel="apple-touch-icon" href="/favicons/favicon-180.svg" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div class="relative min-h-screen overflow-hidden">
+      <a
+        href="#main-content"
+        class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:border focus:border-white/20 focus:bg-slate-950 focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-slate-50"
+      >
+        Skip to main content
+      </a>
+      <div
+        aria-hidden="true"
+        class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(143,183,255,0.16),_transparent_35%),linear-gradient(180deg,rgba(255,255,255,0.03),transparent_22%)]"
+      >
+      </div>
+      <div
+        aria-hidden="true"
+        class="pointer-events-none absolute inset-x-0 top-0 h-px bg-white/10"
+      >
+      </div>
+      <header class="mx-auto w-full max-w-7xl px-6 pt-6 sm:px-8 lg:px-10">
+        <details class="group">
+          <summary
+            class="flex list-none items-center justify-between gap-4 rounded-[1.75rem] border border-white/10 bg-slate-950/70 px-4 py-3 backdrop-blur sm:px-5 [&::-webkit-details-marker]:hidden group-open:rounded-b-none group-open:border-b-0"
+          >
+            <a
+              href="/"
+              aria-label="AuditLab home"
+              class="flex items-center gap-3"
+            >
+              <div
+                class="flex h-10 w-10 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-sm font-semibold tracking-[0.25em] text-slate-100"
+              >
+                AL
+              </div>
+              <div>
+                <p class="text-base font-medium text-slate-100">AuditLab</p>
+                <p class="text-xs uppercase tracking-[0.28em] text-slate-400">
+                  Website audit demo
+                </p>
+              </div>
+            </a>
+
+            <div class="flex items-center gap-2">
+              <div
+                class="hidden rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm font-medium text-slate-300 sm:inline-flex"
+              >
+                Report-first entry point
+              </div>
+              <span
+                class="inline-flex rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-slate-200 transition hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-sky-300 md:hidden"
+              >
+                Menu
+              </span>
+            </div>
+          </summary>
+
+          <nav
+            aria-label="Mobile navigation"
+            class="rounded-b-[1.75rem] border border-white/10 border-t-0 bg-slate-950/85 px-4 py-3 backdrop-blur md:hidden"
+          >
+            <div class="grid gap-2 text-sm text-slate-200">
+              <a
+                href="/"
+                class="rounded-2xl px-3 py-2 transition hover:bg-white/5"
+              >
+                Home
+              </a>
+              <a
+                href="/demo-report"
+                class="rounded-2xl px-3 py-2 transition hover:bg-white/5"
+              >
+                Demo report
+              </a>
+              <a
+                href="/demo-report/launch-ready"
+                class="rounded-2xl px-3 py-2 transition hover:bg-white/5"
+              >
+                Launch-ready report
+              </a>
+              <a
+                href="/case"
+                class="rounded-2xl px-3 py-2 transition hover:bg-white/5"
+              >
+                Case
+              </a>
+            </div>
+          </nav>
+        </details>
+      </header>
+      <slot />
+      <footer
+        class="mx-auto w-full max-w-7xl px-6 pb-6 pt-8 sm:px-8 sm:pt-10 lg:px-10"
+      >
+        <div class="border-t border-white/10 bg-white/[0.02] px-0 pt-5">
+          <div
+            class="grid gap-6 text-base leading-7 text-slate-400 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:grid-cols-[1.1fr_1fr_1.1fr]"
+          >
+            <div class="space-y-2">
+              <a
+                href="/"
+                aria-label="AuditLab home"
+                class="text-base font-medium text-slate-200 transition hover:text-white"
+              >
+                AuditLab
+              </a>
+              <p class="max-w-xs text-sm leading-6 text-slate-500">
+                Fictional SaaS demo for privacy, cookies, accessibility, and UX
+                audits.
+              </p>
+            </div>
+
+            <div class="space-y-2">
+              <p class="text-xs uppercase tracking-[0.24em] text-slate-500">
+                Explore
+              </p>
+              <nav aria-label="Footer explore" class="grid gap-2 text-sm">
+                <a href="/" class="transition hover:text-slate-200"> Home </a>
+                <a href="/demo-report" class="transition hover:text-slate-200">
+                  Demo report
+                </a>
+                <a
+                  href="/demo-report/launch-ready"
+                  class="transition hover:text-slate-200"
+                >
+                  Launch-ready report
+                </a>
+                <a href="/case" class="transition hover:text-slate-200">
+                  Case
+                </a>
+              </nav>
+            </div>
+
+            <div class="space-y-3 text-xs">
+              <div class="space-y-2">
+                <p class="text-xs uppercase tracking-[0.24em] text-slate-500">
+                  Policies
+                </p>
+                <nav aria-label="Footer policies" class="grid gap-2 text-sm">
+                  <a href="/privacy" class="transition hover:text-slate-200">
+                    Privacy
+                  </a>
+                  <a href="/cookies" class="transition hover:text-slate-200">
+                    Cookies
+                  </a>
+                  <a
+                    href="/accessibility"
+                    class="transition hover:text-slate-200"
+                  >
+                    Accessibility
+                  </a>
+                  <a href="/terms" class="transition hover:text-slate-200">
+                    Terms
+                  </a>
+                  <a
+                    href="/portfolio-disclosure"
+                    class="transition hover:text-slate-200"
+                  >
+                    Portfolio disclosure
+                  </a>
+                </nav>
+              </div>
+
+              <div class="space-y-2">
+                <p class="text-sm leading-6 text-slate-500">
+                  Portfolio owner:
+                  <a
+                    href="https://copycodeai.online"
+                    class="transition hover:text-slate-200"
+                  >
+                    copycodeai.online
+                  </a>
+                  ·
+                  <a
+                    href="mailto:hello@copycodeai.online"
+                    class="transition hover:text-slate-200"
+                  >
+                    hello@copycodeai.online
+                  </a>
+                </p>
+                <p class="text-sm leading-6 text-slate-500">
+                  Built with Astro, Tailwind, TypeScript, static local data, and
+                  reusable components.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

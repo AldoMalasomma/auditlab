@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import FinalCta from './FinalCta.astro';
+import FindingsList from './FindingsList.astro';
+import PriorityFixes from './PriorityFixes.astro';
+import ReportNarrative from './ReportNarrative.astro';
+import ReportHeader from './ReportHeader.astro';
+import ScoreCards from './ScoreCards.astro';
+import type { DemoReportData, ReportToggleLink } from '../../data/demo-report';
+
+interface Props {
+  report: DemoReportData;
+  switchLink: ReportToggleLink;
+}
+
+const { report, switchLink } = Astro.props;
+
+const pageTitle = `${report.domain} | AuditLab`;
+const pageDescription = `${report.variantLabel} for ${report.domain}. ${report.statusSummary}`;
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <main
+    id="main-content"
+    tabindex="-1"
+    class="mx-auto flex min-h-screen w-full max-w-7xl flex-col gap-6 px-6 py-6 sm:px-8 lg:px-10 lg:gap-8"
+  >
+    <div id="top" aria-hidden="true"></div>
+    <header
+      class="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-4"
+    >
+      <a href="/" aria-label="AuditLab home" class="flex items-center gap-3">
+        <div
+          class="flex h-10 w-10 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-sm font-semibold tracking-[0.25em] text-slate-100"
+        >
+          AL
+        </div>
+        <div>
+          <p class="text-sm font-medium text-slate-100">AuditLab</p>
+          <p class="text-xs uppercase tracking-[0.28em] text-slate-400">
+            Demo report
+          </p>
+        </div>
+      </a>
+
+      <div class="flex flex-wrap items-center gap-2">
+        <span
+          class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-200"
+        >
+          {report.variantLabel}
+        </span>
+        <a
+          href={switchLink.href}
+          class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium uppercase tracking-[0.22em] text-slate-300 transition hover:bg-white/10 hover:text-white"
+        >
+          {switchLink.label}
+        </a>
+        <a
+          href="/"
+          class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium uppercase tracking-[0.22em] text-slate-300 transition hover:bg-white/10 hover:text-white"
+        >
+          Back to overview
+        </a>
+      </div>
+    </header>
+
+    <ReportHeader report={report} />
+
+    <ReportNarrative report={report} />
+
+    <ScoreCards cards={report.categoryScores} />
+
+    <div class="grid gap-6 xl:grid-cols-[minmax(0,1fr)_24rem] xl:items-start">
+      <FindingsList findings={report.findings} />
+      <PriorityFixes fixes={report.priorityFixes} />
+    </div>
+
+    <FinalCta cta={report.finalCta} />
+  </main>
+</BaseLayout>

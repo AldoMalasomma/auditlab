@@ -1,17 +1,306 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
 
+const auditFocusAreas = [
+  {
+    label: 'Privacy / GDPR',
+    copy: 'Checks disclosure placement, third-party behavior, and whether the privacy story is easy to defend.',
+  },
+  {
+    label: 'Cookies',
+    copy: 'Looks at consent balance, banner clarity, and whether the choice feels genuinely neutral.',
+  },
+  {
+    label: 'Accessibility',
+    copy: 'Reviews structure, contrast, keyboard support, and the parts that affect everyday use.',
+  },
+  {
+    label: 'UX',
+    copy: 'Checks the first read, the hierarchy, and whether the page explains itself quickly enough.',
+  },
+];
+
+const auditSteps = [
+  {
+    step: '01',
+    title: 'Enter a site',
+    copy: 'The demo starts from a URL and treats the site as an audit subject, not a marketing target.',
+  },
+  {
+    step: '02',
+    title: 'Review findings',
+    copy: 'The report surfaces the issues, why they matter, and which ones change the overall picture.',
+  },
+  {
+    step: '03',
+    title: 'Prioritize fixes',
+    copy: 'The end of the report turns the audit into a short, practical sequence of next actions.',
+  },
+];
+
+const previewFindings: {
+  severity: PreviewSeverity;
+  title: string;
+  copy: string;
+}[] = [
+  {
+    severity: 'high',
+    title: 'Consent controls favor acceptance',
+    copy: 'The cookie decision is not visually neutral, which weakens trust before the user reads the explanation.',
+  },
+  {
+    severity: 'high',
+    title: 'Scripts begin before consent is clear',
+    copy: 'Some third-party behavior appears too early, which makes the privacy story harder to defend.',
+  },
+  {
+    severity: 'medium',
+    title: 'Focus states need clearer contrast',
+    copy: 'The interface is readable, but keyboard users still benefit from stronger visibility on dark surfaces.',
+  },
+];
+
+type PreviewSeverity = 'high' | 'medium';
+
+const severityStyles: Record<PreviewSeverity, string> = {
+  high: 'border-rose-400/20 bg-rose-400/10 text-rose-100',
+  medium: 'border-amber-400/20 bg-amber-400/10 text-amber-100',
+};
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+  title="AuditLab"
+  description="AuditLab is a calm, report-first demo that audits privacy, cookies, accessibility, and UX."
+>
+  <main
+    id="main-content"
+    tabindex="-1"
+    class="mx-auto flex min-h-screen w-full max-w-7xl flex-col px-6 py-6 sm:px-8 lg:px-10"
+  >
+    <header
+      class="flex items-center justify-between border-b border-white/10 pb-4"
+    >
+      <a href="/" aria-label="AuditLab home" class="flex items-center gap-3">
+        <div
+          class="flex h-10 w-10 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-sm font-semibold tracking-[0.25em] text-slate-100"
+        >
+          AL
+        </div>
+        <div>
+          <p class="text-sm font-medium text-slate-100">AuditLab</p>
+          <p class="text-xs uppercase tracking-[0.28em] text-slate-400">
+            Website audit demo
+          </p>
+        </div>
+      </a>
+
+      <div
+        class="hidden rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300 sm:inline-flex"
+      >
+        Report-first entry point
+      </div>
+    </header>
+
+    <section
+      class="grid gap-8 py-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-start lg:py-16"
+    >
+      <div class="space-y-8">
+        <div class="space-y-4">
+          <p class="text-xs uppercase tracking-[0.28em] text-slate-400">
+            AuditLab overview
+          </p>
+          <h1
+            class="max-w-3xl text-4xl font-semibold tracking-tight text-balance text-slate-50 sm:text-5xl lg:text-6xl"
+          >
+            A website audit demo built around the report, not around the pitch.
+          </h1>
+          <p class="max-w-2xl text-base leading-7 text-slate-300 sm:text-lg">
+            AuditLab shows how a site reads across privacy, cookies,
+            accessibility, and UX, then turns that read into a structured report
+            with clear next steps.
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-3 sm:flex-row">
+          <a
+            href="/demo-report"
+            class="inline-flex items-center justify-center rounded-full bg-slate-100 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-white"
+          >
+            Open demo report
+          </a>
+          <a
+            href="/demo-report/launch-ready"
+            class="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold text-slate-100 transition hover:bg-white/10"
+          >
+            View launch-ready version
+          </a>
+        </div>
+
+        <p class="max-w-2xl text-sm leading-6 text-slate-400">
+          Start with the risk-heavy report, then switch to a cleaner baseline if
+          you want to see how the same structure changes in tone.
+        </p>
+      </div>
+
+      <aside class="space-y-4">
+        <figure
+          class="rounded-[2rem] border border-white/10 bg-slate-950/75 p-4 sm:p-5"
+        >
+          <div
+            class="overflow-hidden rounded-[1.5rem] border border-white/10 bg-slate-950/90"
+          >
+            <img
+              src="/images/auditlab-visual-1.png"
+              alt="AuditLab report mockup showing a privacy and accessibility audit summary on a dark interface."
+              class="block h-auto w-full"
+              loading="eager"
+              decoding="async"
+            />
+          </div>
+          <figcaption
+            class="mt-3 flex items-center justify-between gap-4 text-xs uppercase tracking-[0.24em] text-slate-500"
+          >
+            <span>Product mockup</span>
+            <span>Report-first visual</span>
+          </figcaption>
+        </figure>
+      </aside>
+    </section>
+
+    <section class="border-t border-white/10 py-8">
+      <div class="max-w-3xl space-y-3">
+        <p class="text-xs uppercase tracking-[0.3em] text-slate-400">
+          What the audit looks at
+        </p>
+        <h2 class="text-2xl font-semibold tracking-tight text-slate-50">
+          Four lenses, one report
+        </h2>
+        <p class="text-sm leading-6 text-slate-300">
+          The demo keeps the scope narrow so the report stays credible and
+          readable.
+        </p>
+      </div>
+
+      <div class="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        {
+          auditFocusAreas.map((area) => (
+            <article class="rounded-3xl border border-white/10 bg-white/5 p-5">
+              <p class="text-sm font-medium text-slate-100">{area.label}</p>
+              <p class="mt-3 text-sm leading-6 text-slate-300">{area.copy}</p>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="border-t border-white/10 py-8">
+      <div class="max-w-3xl space-y-3">
+        <p class="text-xs uppercase tracking-[0.3em] text-slate-400">
+          How it works
+        </p>
+        <h2 class="text-2xl font-semibold tracking-tight text-slate-50">
+          A short audit flow
+        </h2>
+      </div>
+
+      <div class="mt-6 grid gap-4 lg:grid-cols-3">
+        {
+          auditSteps.map((step) => (
+            <article class="rounded-3xl border border-white/10 bg-white/5 p-5">
+              <div class="flex items-center justify-between gap-4">
+                <span class="text-xs uppercase tracking-[0.26em] text-slate-500">
+                  {step.step}
+                </span>
+                <span class="h-px flex-1 bg-white/10" aria-hidden="true" />
+              </div>
+              <h3 class="mt-4 text-lg font-medium text-slate-50">
+                {step.title}
+              </h3>
+              <p class="mt-3 text-sm leading-6 text-slate-300">{step.copy}</p>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="border-t border-white/10 py-8">
+      <div class="max-w-3xl space-y-3">
+        <p class="text-xs uppercase tracking-[0.3em] text-slate-400">
+          Sample findings
+        </p>
+        <h2 class="text-2xl font-semibold tracking-tight text-slate-50">
+          A preview of the report tone
+        </h2>
+        <p class="text-sm leading-6 text-slate-300">
+          These examples match the report language and show how issues are
+          framed before you open the full audit.
+        </p>
+      </div>
+
+      <div class="mt-6 grid gap-4 lg:grid-cols-3">
+        {
+          previewFindings.map((finding) => (
+            <article class="rounded-[1.75rem] border border-white/10 bg-slate-950/65 p-5">
+              <div class="flex items-start justify-between gap-4">
+                <div class="space-y-2">
+                  <p class="text-xs uppercase tracking-[0.24em] text-slate-500">
+                    Preview issue
+                  </p>
+                  <h3 class="text-lg font-semibold text-slate-50">
+                    {finding.title}
+                  </h3>
+                </div>
+                <span
+                  class={`rounded-full border px-3 py-1 text-xs font-medium uppercase tracking-[0.22em] ${severityStyles[finding.severity]}`}
+                >
+                  {finding.severity}
+                </span>
+              </div>
+              <p class="mt-4 text-sm leading-6 text-slate-300">
+                {finding.copy}
+              </p>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="border-t border-white/10 py-8">
+      <div
+        class="rounded-[2rem] border border-white/10 bg-white/5 p-6 sm:p-7 lg:p-8"
+      >
+        <div
+          class="grid gap-5 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-center"
+        >
+          <div class="space-y-3">
+            <p class="text-xs uppercase tracking-[0.3em] text-slate-400">
+              Explore the report
+            </p>
+            <h2 class="text-2xl font-semibold tracking-tight text-slate-50">
+              The report is the product demo.
+            </h2>
+            <p class="max-w-2xl text-sm leading-6 text-slate-300 sm:text-base">
+              If you want the full flow, open the report and move through the
+              findings, priority fixes, and handoff section in order.
+            </p>
+          </div>
+
+          <div class="flex flex-col gap-3 sm:flex-row lg:flex-col">
+            <a
+              href="/demo-report"
+              class="inline-flex items-center justify-center rounded-full bg-slate-100 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-white"
+            >
+              Open demo report
+            </a>
+            <a
+              href="/demo-report/launch-ready"
+              class="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold text-slate-100 transition hover:bg-white/10"
+            >
+              Compare launch-ready version
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

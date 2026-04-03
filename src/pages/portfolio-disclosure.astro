@@ -1,0 +1,56 @@
+---
+import SupportPage from '../components/support/SupportPage.astro';
+
+const sections = [
+  {
+    title: 'Why this page exists',
+    paragraphs: [
+      'AuditLab is a fictional SaaS demo built as a portfolio project. The disclosure page exists so the product illusion stays credible while the project context remains explicit.',
+    ],
+  },
+  {
+    title: 'What is fictional',
+    paragraphs: [
+      'The audit results, policy pages, and next-step handoff are all static front-end content. They are designed to demonstrate architecture, content structure, and product presentation.',
+    ],
+  },
+  {
+    title: 'What is real',
+    paragraphs: [
+      'The codebase, layout system, documentation practice, and component structure are real portfolio work. The contact references below belong to the portfolio owner, designer, and developer of the demo.',
+    ],
+  },
+  {
+    title: 'How to use the contact details',
+    paragraphs: [
+      'If you want to discuss the project, the implementation, or the visual direction, use the portfolio contact rather than any product support framing.',
+    ],
+  },
+];
+---
+
+<SupportPage
+  title="Portfolio disclosure"
+  description="AuditLab portfolio disclosure and contact page."
+  eyebrow="Project context"
+  intro="This page states the boundary clearly: AuditLab is a fictional SaaS demo, built to read like a real product while still presenting itself as portfolio work."
+  backHref="/case"
+  backLabel="Back to case"
+  sections={sections}
+  sidebarTitle="Portfolio owner"
+  sidebarIntro="The contact details below belong to the portfolio owner, designer, and developer behind the demo."
+  sidebarPoints={[
+    'Fictional SaaS presentation',
+    'Static content and local data',
+    'No live product operations',
+  ]}
+  contactTitle="Contact"
+  contactLinks={[
+    { label: 'copycodeai.online', href: 'https://copycodeai.online' },
+    {
+      label: 'hello@copycodeai.online',
+      href: 'mailto:hello@copycodeai.online',
+    },
+  ]}
+  portfolioNote="AuditLab is a fictional SaaS demo built as part of a portfolio project. The disclosure is here to keep the presentation honest."
+/>

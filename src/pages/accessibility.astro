@@ -1,0 +1,51 @@
+---
+import SupportPage from '../components/support/SupportPage.astro';
+
+const sections = [
+  {
+    title: 'Scope',
+    paragraphs: [
+      'The accessibility page describes the kinds of checks this demo report models: structure, contrast, keyboard access, and the clarity of interactive states.',
+    ],
+  },
+  {
+    title: 'What is checked',
+    paragraphs: [
+      'The report looks for obvious friction points: low-contrast controls, unclear focus states, and layouts that break the reading order on smaller screens.',
+      'It is a portfolio demo, so the findings are illustrative rather than generated from a live audit engine.',
+    ],
+  },
+  {
+    title: 'Known limits',
+    paragraphs: [
+      'The project is intentionally static. It shows how accessibility findings can be presented and prioritized, but it does not try to replace a full manual or automated review.',
+    ],
+  },
+];
+---
+
+<SupportPage
+  title="Accessibility"
+  description="AuditLab accessibility page for the fictional portfolio demo."
+  eyebrow="Support page"
+  intro="This page keeps the accessibility lens credible and practical without pretending the demo is a full audit service."
+  backHref="/case"
+  backLabel="Back to case"
+  sections={sections}
+  sidebarTitle="Portfolio framing"
+  sidebarIntro="Accessibility is shown as part of the product logic, with enough structure to feel real and enough restraint to stay honest."
+  sidebarPoints={[
+    'Static findings model only',
+    'No claim of complete compliance',
+    'Contact remains with the portfolio owner',
+  ]}
+  contactTitle="Portfolio contact"
+  contactLinks={[
+    { label: 'copycodeai.online', href: 'https://copycodeai.online' },
+    {
+      label: 'hello@copycodeai.online',
+      href: 'mailto:hello@copycodeai.online',
+    },
+  ]}
+  portfolioNote="Prepared for the current portfolio build. This page is a support reference, not a certification statement."
+/>

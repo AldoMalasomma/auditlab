@@ -1,0 +1,84 @@
+---
+import type { Finding, Severity } from '../../data/demo-report';
+import FindingItem from './FindingItem.astro';
+
+interface Props {
+  findings: Finding[];
+}
+
+const { findings } = Astro.props;
+
+const severityOrder: Severity[] = ['high', 'medium', 'low'];
+const severityLabels: Record<Severity, string> = {
+  high: 'High severity',
+  medium: 'Medium severity',
+  low: 'Low severity',
+};
+
+const groupedFindings = severityOrder.map((severity) => ({
+  severity,
+  findings: findings.filter((finding) => finding.severity === severity),
+}));
+---
+
+<section
+  id="findings"
+  aria-labelledby="findings-heading"
+  class="rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-2xl shadow-slate-950/20 backdrop-blur sm:p-7 lg:p-8"
+>
+  <div class="max-w-3xl space-y-3">
+    <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Findings</p>
+    <h2
+      id="findings-heading"
+      class="text-2xl font-semibold tracking-tight text-slate-50"
+    >
+      Findings ordered by trust impact
+    </h2>
+    <p class="text-sm leading-6 text-slate-300">
+      The higher-risk items come first because they explain why the score lands
+      where it does. The remaining notes are the launch polish that still
+      matters.
+    </p>
+  </div>
+
+  <div class="mt-5 flex flex-wrap gap-2">
+    {
+      severityOrder.map((severity) => (
+        <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium uppercase tracking-[0.22em] text-slate-300">
+          {severityLabels[severity]}
+        </span>
+      ))
+    }
+  </div>
+
+  <div class="mt-6 space-y-6">
+    {
+      groupedFindings.map(
+        ({ severity, findings }) =>
+          findings.length > 0 && (
+            <section aria-labelledby={`severity-${severity}`} class="space-y-4">
+              <div class="flex items-center justify-between gap-4">
+                <h3
+                  id={`severity-${severity}`}
+                  class="text-sm font-semibold uppercase tracking-[0.28em] text-slate-400"
+                >
+                  {severityLabels[severity]}
+                </h3>
+                <span class="text-sm text-slate-500">
+                  {findings.length} items
+                </span>
+              </div>
+
+              <ul class="grid gap-4">
+                {findings.map((finding) => (
+                  <li>
+                    <FindingItem finding={finding} />
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ),
+      )
+    }
+  </div>
+</section>
