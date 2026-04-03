@@ -143,3 +143,21 @@
 **Files changed:** `src/layouts/BaseLayout.astro`, `docs/prompt-log.md`, `docs/worklog.md`, and `docs/implementation-notes.md`.
 **Outcome:** The mobile navigation now reads as a dropdown extension of the header, with the panel attached directly under the top bar.
 **Notes:** The desktop header remains unchanged; the fix is purely about mobile integration and visual hierarchy.
+
+## PROMPT #018 — Hero Image Delivery Optimization
+
+**Date:** 2026-04-03
+**Goal:** Reduce the homepage hero image weight so Lighthouse performance improves without changing the layout or visual direction.
+**Requested work:** Replace the single large PNG hero asset with responsive image sources, prefer modern formats, and update relevant docs.
+**Files changed:** `src/pages/index.astro`, `public/images/auditlab-visual-1-546.png`, `public/images/auditlab-visual-1-1092.png`, `public/images/auditlab-visual-1-546.webp`, `public/images/auditlab-visual-1-1092.webp`, `docs/prompt-log.md`, `docs/worklog.md`, and `docs/implementation-notes.md`.
+**Outcome:** The homepage hero now serves lightweight WebP variants with smaller PNG fallbacks, which should cut the hero image transfer size significantly.
+**Notes:** The visual design is unchanged; the fix is purely about responsive delivery and compression.
+
+## PROMPT #019 — Screenshot Asset Set
+
+**Date:** 2026-04-03
+**Goal:** Create a reusable set of WebP screenshots for the key pages in desktop and mobile formats.
+**Requested work:** Capture the main pages in both viewports, save the images under `public/images/screenshoots`, and keep the existing site structure unchanged.
+**Files changed:** `public/images/screenshoots/auditlab-home-desktop.webp`, `public/images/screenshoots/auditlab-home-mobile.webp`, `public/images/screenshoots/auditlab-demo-report-desktop.webp`, `public/images/screenshoots/auditlab-demo-report-mobile.webp`, `public/images/screenshoots/auditlab-launch-ready-report-desktop.webp`, `public/images/screenshoots/auditlab-launch-ready-report-mobile.webp`, `public/images/screenshoots/auditlab-case-desktop.webp`, `public/images/screenshoots/auditlab-case-mobile.webp`, `public/images/screenshoots/auditlab-privacy-desktop.webp`, `public/images/screenshoots/auditlab-privacy-mobile.webp`, `public/images/screenshoots/auditlab-portfolio-disclosure-desktop.webp`, and `public/images/screenshoots/auditlab-portfolio-disclosure-mobile.webp`.
+**Outcome:** The project now includes a compact screenshot library for the homepage, report variants, case page, and support pages in both desktop and mobile formats.
+**Notes:** The screenshots were captured from the local Astro dev server and compressed to WebP for portfolio use.

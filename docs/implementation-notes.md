@@ -26,6 +26,8 @@
 - Add a tiny mobile navigation menu in the shared header using static controls rather than a JS-heavy menu system.
 - Prefer native disclosure behavior (`details`/`summary`) for small mobile menus when the goal is reliability and keyboard support.
 - Anchor the mobile dropdown to the header container so it reads like an expanded header state, not a separate card.
+- Deliver large hero images with responsive `picture` sources and modern formats so LCP does not inherit the original source weight.
+- Keep the screenshot library in `public/images/screenshoots` as compressed WebP outputs for the main public routes.
 
 ## Current implementation details
 
@@ -33,10 +35,12 @@
 - `src/pages/index.astro` renders the first product-facing frame.
 - `src/pages/index.astro` now acts as the report-first entry flow.
 - `src/pages/index.astro` now includes `/images/auditlab-visual-1.png` in the hero support panel.
+- `public/images/screenshoots` now holds desktop and mobile WebP screenshots for the homepage, both report variants, the case page, and the support pages.
 - `src/layouts/BaseLayout.astro` now links the logo area home, wires the favicon assets from `public/favicons/`, and includes a skip link.
 - `src/layouts/BaseLayout.astro` now also carries the minimal mobile navigation trigger and essential-link menu.
 - the mobile navigation now uses `<details>/<summary>` so it opens reliably without JavaScript.
 - the mobile navigation panel is attached directly below the header summary and uses the same surface treatment.
+- the homepage hero now uses responsive WebP sources with a compressed PNG fallback for broader compatibility.
 - the main content areas now carry `tabindex="-1"` so the skip link can land on a focusable target.
 - `src/styles/global.css` now defines visible `:focus-visible` styling for interactive controls.
 - `src/pages/demo-report.astro` composes the report page from reusable local components.

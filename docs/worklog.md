@@ -20,6 +20,7 @@
 - the global header now includes a minimal mobile navigation trigger and essential-link menu
 - the mobile navigation now uses a native disclosure pattern so the links actually appear on tap/click
 - the mobile navigation now reads as an attached dropdown rather than a floating block
+- the homepage hero image now uses responsive WebP delivery with smaller PNG fallbacks
 - the documentation system is persistent and versioned inside `docs/`
 
 ## 2026-04-03
@@ -50,6 +51,8 @@
 - added a compact mobile navigation menu for the essential site routes
 - replaced the checkbox-based mobile toggle with a native disclosure element
 - reworked the mobile menu so the panel is visually attached to the header container
+- generated compressed responsive variants for the hero mockup and swapped the page to use `picture`
+- added a WebP screenshot set for the main pages in desktop and mobile variants under `public/images/screenshoots`
 
 ## Attention points
 
@@ -62,6 +65,7 @@
 - keep the homepage aligned with the report tone instead of drifting into generic SaaS marketing
 - keep the portfolio layer thin so the report still feels like the main product experience
 - keep the footer compact so it closes the page without competing with the content above it
+- keep the screenshot asset library focused on the key public pages so it stays useful and maintainable
 
 ## Notes
 
@@ -80,6 +84,8 @@
 - the mobile menu is intentionally minimal and keeps legal/support links in the footer
 - the previous toggle pattern was not reliable in practice; the disclosure version is the durable fix
 - the current dropdown pattern is the integrated version, not a separate floating card
+- the hero image now serves much smaller assets while keeping the same composition
+- the screenshot set is stored as WebP files in `public/images/screenshoots` for portfolio use
 
 ## Next recommended step
 
