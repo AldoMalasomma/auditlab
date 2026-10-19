@@ -18,79 +18,84 @@ interface Props {
 const { report } = Astro.props;
 
 const statusClasses = {
-  'Action required': 'border-amber-400/25 bg-amber-400/10 text-amber-100',
-  'Mostly ready': 'border-emerald-400/25 bg-emerald-400/10 text-emerald-100',
-  Healthy: 'border-emerald-400/25 bg-emerald-400/10 text-emerald-100',
+  'Action required': 'audit-meta--status-warning',
+  'Mostly ready': 'audit-meta--status-success',
+  Healthy: 'audit-meta--status-success',
 };
 
 const statusClass =
   statusClasses[report.statusLabel as keyof typeof statusClasses] ??
-  'border-sky-400/25 bg-sky-400/10 text-sky-100';
+  'audit-meta--status';
 ---
 
 <header
-  class="grid gap-6 rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-2xl shadow-slate-950/30 backdrop-blur sm:p-7 lg:grid-cols-[minmax(0,1fr)_20rem] lg:p-8"
+  class="audit-report-hero audit-frame grid gap-5 p-5 sm:p-7 lg:grid-cols-[minmax(0,1fr)_20rem] lg:p-8"
 >
-  <div class="space-y-4">
-    <div class="flex flex-wrap items-center gap-3">
-      <p class="text-xs uppercase tracking-[0.28em] text-slate-400">
-        Demo report
-      </p>
-      <span
-        class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-200"
-      >
+  <div class="space-y-4 sm:space-y-5">
+    <div class="flex flex-wrap items-center gap-2.5 sm:gap-3">
+      <p class="audit-eyebrow">Demo report</p>
+      <span class="audit-meta">
         {report.variantLabel}
       </span>
-      <span
-        class={`rounded-full border px-3 py-1 text-xs font-medium ${statusClass}`}
-      >
+      <span class={`audit-meta audit-meta--status ${statusClass}`}>
         {report.statusLabel}
       </span>
     </div>
 
     <div class="space-y-3">
       <h1
-        class="max-w-3xl text-3xl font-semibold tracking-tight text-balance text-slate-50 sm:text-4xl"
+        class="max-w-3xl text-[2.15rem] font-semibold tracking-[-0.04em] text-balance leading-[0.98] text-[color:var(--audit-text-0)] sm:text-4xl"
       >
         {report.domain}
       </h1>
-      <p class="max-w-3xl text-base leading-7 text-slate-300 sm:text-lg">
+      <p
+        class="max-w-3xl text-[0.98rem] leading-7 text-[color:var(--audit-text-1)] sm:text-lg"
+      >
         {report.statusSummary}
       </p>
     </div>
 
-    <dl class="grid gap-4 sm:grid-cols-2">
-      <div class="rounded-3xl border border-white/10 bg-slate-950/60 p-4">
-        <dt class="text-xs uppercase tracking-[0.24em] text-slate-400">
-          Audited domain
-        </dt>
-        <dd class="mt-2 text-lg font-medium text-slate-100">{report.domain}</dd>
+    <dl class="grid gap-3 sm:grid-cols-2 sm:gap-4">
+      <div class="audit-card audit-card--quiet p-4">
+        <dt class="audit-label">Audited domain</dt>
+        <dd class="mt-2 text-lg font-medium text-[color:var(--audit-text-0)]">
+          {report.domain}
+        </dd>
       </div>
-      <div class="rounded-3xl border border-white/10 bg-slate-950/60 p-4">
-        <dt class="text-xs uppercase tracking-[0.24em] text-slate-400">
-          Audit date
-        </dt>
-        <dd class="mt-2 text-lg font-medium text-slate-100">
+      <div class="audit-card audit-card--quiet p-4">
+        <dt class="audit-label">Audit date</dt>
+        <dd class="mt-2 text-lg font-medium text-[color:var(--audit-text-0)]">
           {report.auditDate}
         </dd>
       </div>
     </dl>
   </div>
 
-  <aside class="rounded-3xl border border-white/10 bg-slate-950/70 p-5">
-    <p class="text-xs uppercase tracking-[0.3em] text-slate-400">
-      Overall score
-    </p>
-    <div class="mt-4 flex items-end gap-3">
-      <span class="text-5xl font-semibold tracking-tight text-slate-50">
-        {report.overallScore}
-      </span>
-      <span class="pb-1 text-sm text-slate-400">/ 100</span>
+  <aside class="audit-report-score audit-panel audit-panel--inset p-4 sm:p-5">
+    <p class="audit-report-score__meta">Overall score</p>
+    <div class="mt-4 flex flex-col gap-4 sm:flex-row sm:items-start">
+      <div class="audit-report-score__figure" aria-hidden="true">
+        <div class="audit-report-score__figure-inner">
+          <span
+            class="audit-stat text-[2.15rem] font-semibold leading-none text-[color:var(--audit-text-0)] sm:text-4xl"
+          >
+            {report.overallScore}
+          </span>
+        </div>
+      </div>
+      <div class="space-y-2 pt-0 sm:pt-1">
+        <p class="text-sm text-[color:var(--audit-text-3)]">/ 100</p>
+        <p
+          class="mt-2 text-xs uppercase tracking-[0.22em] text-[color:var(--audit-text-2)]"
+        >
+          Audit baseline
+        </p>
+      </div>
     </div>
-    <p class="mt-4 text-sm font-medium leading-6 text-slate-100">
+    <p class="audit-report-score__interpretation mt-4 font-medium">
       {report.scoreInterpretation}
     </p>
-    <p class="mt-2 text-sm leading-6 text-slate-300">
+    <p class="audit-report-score__context mt-2">
       {report.scoreContext}
     </p>
   </aside>
